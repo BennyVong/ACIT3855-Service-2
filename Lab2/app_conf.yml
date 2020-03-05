@@ -1,0 +1,11 @@
+version: 1
+datastore:
+  user: user
+  password: password
+  hostname: MSI
+  port: "3306"
+  db: readings
+kafka:
+  host: localhost
+  port: 9092
+  topic: events
