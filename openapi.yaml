@@ -1,0 +1,113 @@
+swagger: '2.0'
+info:
+  description: This is a simple API
+  version: 1.0.0
+  title: Simple Inventory API
+
+
+paths:
+  /report/inventory:
+    get:
+      summary: gets inventory
+      operationId: app.get_inventory
+      description: Stores a inventory report
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: start_date
+        description: pass an optional search string for looking up the event
+        required: false
+        type: string
+        format: date-time
+      - in: query
+        name: end_date
+        description: pass an optional search string for looking up the event
+        required: false
+        type: string
+        format: date-time
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/InventoryItem'
+        400:
+          description: bad input parameter
+
+  /report/status:
+    get:
+      summary: gets status
+      operationId: app.get_status
+      description: gets the status
+      produces:
+      - application/json
+      parameters:
+        - in: query
+          name: start_date
+          description: pass an optional search string for looking up the event
+          required: false
+          type: string
+          format: date-time
+        - in: query
+          name: end_date
+          description: pass an optional search string for looking up the event
+          required: false
+          type: string
+          format: date-time
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ItemStatus'
+        400:
+          description: bad input parameter
+
+definitions:
+  InventoryItem:
+    type: object
+    required:
+    - item_id
+    - name
+    - manufacturer
+    - warehouse
+    properties:
+      item_id:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      name:
+        type: string
+        example: Widget Adapter
+      manufacturer:
+        type: string
+        example: ACME Corporation
+      warehouse:
+        type: string
+        example: 001
+
+  ItemStatus:
+    type: object
+    required:
+    - item_id
+    - status
+    - destination
+    - deliverydate
+    properties:
+      item_id:
+        type: string
+        format: uuid
+        example: d290f1ee-6c54-4b01-90e6-d701748f0851
+      status:
+        type: string
+        example: Outgoing
+      destination:
+        type: string
+        example: 001
+      deliverydate:
+        type: string
+        format: date-time
+        example: 2019-01-29T01:12:33
