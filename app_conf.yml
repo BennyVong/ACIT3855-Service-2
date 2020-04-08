@@ -6,6 +6,6 @@ datastore:
   port: "3306"
   db: readings
 kafka:
-  host: "ec2-54-201-251-133.us-west-2.compute.amazonaws.com"
+  host: "ec2-52-25-67-56.us-west-2.compute.amazonaws.com"
   port: "9092"
   topic: "events"
