@@ -10,9 +10,9 @@ from pykafka import KafkaClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import Date, cast
-from .base import Base
-from .inventory import Inventory
-from .status import Status
+from base import Base
+from inventory import Inventory
+from status import Status
 import datetime
 
 with open('app_conf.yml', 'r') as f:
