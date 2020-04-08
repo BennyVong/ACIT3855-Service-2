@@ -1,10 +1,10 @@
 version: 1
 datastore:
-  user: user
-  password: password
-  hostname: MSI
+  user: "user"
+  password: "password"
+  hostname: "ec2-52-25-67-56.us-west-2.compute.amazonaws.com"
   port: "3306"
-  db: readings
+  db: "readings"
 kafka:
   host: "ec2-52-25-67-56.us-west-2.compute.amazonaws.com"
   port: "9092"
